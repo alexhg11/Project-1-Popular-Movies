@@ -36,10 +36,23 @@ import java.util.List;
 public class MovieFeedFragment extends Fragment {
 
     private final String LOG_TAG = MovieFeedFragment.class.getSimpleName();
+    private final String MOVIE_KEY = "MOVIE_LIST";
+
+    private ArrayList<Movie> listMovies;
+
     private ImageAdapter mMovieFeedAdapter;
 
     public MovieFeedFragment() {
 
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null)
+        {
+            listMovies = savedInstanceState.getParcelableArrayList(MOVIE_KEY);
+        }
     }
 
     @Override
@@ -51,7 +64,7 @@ public class MovieFeedFragment extends Fragment {
         GridView gridView =  (GridView) rootView.findViewById(R.id.gridview_moviefeed);
         mMovieFeedAdapter = new ImageAdapter(
                 getActivity(),
-                new ArrayList<Movie>()
+                listMovies
         );
         gridView.setAdapter(mMovieFeedAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -74,6 +87,12 @@ public class MovieFeedFragment extends Fragment {
     public void onStart() {
         super.onStart();
         updateMovieFeed();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(MOVIE_KEY, (ArrayList<Movie>) listMovies);
     }
 
     private void updateMovieFeed() {
@@ -99,7 +118,7 @@ public class MovieFeedFragment extends Fragment {
             String movieFeedJsonStr = null;
 
             // URI parameters
-            String apiKey = "NO_API_KEY_CONFIGURED";
+            String apiKey = "1efc24d215f8e5bb6852972b99adceea";
 
             try {
                 // Construct the URL for the Movie DB query
@@ -178,6 +197,7 @@ public class MovieFeedFragment extends Fragment {
         @Override
         protected void onPostExecute(List<Movie> result) {
             if(result != null && result.size() > 0) {
+                listMovies = new ArrayList<> (result);
                 mMovieFeedAdapter.setMovies(result);
                 // New data is back from the server.  Hooray!
                 mMovieFeedAdapter.notifyDataSetChanged();

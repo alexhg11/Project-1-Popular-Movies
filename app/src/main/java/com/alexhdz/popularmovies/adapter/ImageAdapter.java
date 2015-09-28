@@ -36,7 +36,7 @@ public class ImageAdapter extends BaseAdapter {
 
     // Interface Methods
     public int getCount() {
-        return movies.size();
+        return movies != null ? movies.size() : 0;
     }
 
     public Movie getItem(int position) {
