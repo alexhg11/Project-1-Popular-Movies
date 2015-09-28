@@ -1,6 +1,9 @@
 package com.alexhdz.popularmovies.model;
 
-public class Movie {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Movie implements Parcelable {
 
     // Properties
     private boolean isAdult;
@@ -128,6 +131,62 @@ public class Movie {
     }
 
     // Interface Methods
+
+    /**
+     * Parcelable constructor
+     *
+     * @param source Parcel source
+     */
+    protected Movie(Parcel source){
+        this.isAdult = source.readByte() != 0;
+        this.backdropUri = source.readString();
+        this.id = source.readInt();
+        this.originalLanguage = source.readString();
+        this.originalTitle = source.readString();
+        this.overview = source.readString();
+        this.releaseDate = source.readString();
+        this.posterUri = source.readString();
+        this.popularity = source.readDouble();
+        this.title = source.readString();
+        this.hasVideo = source.readByte() != 0;
+        this.voteAverage = source.readDouble();
+        this.voteCount = source.readInt();
+    }
+
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel source) {
+            return new Movie(source);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeByte((byte) (isAdult ? 1 : 0));
+        dest.writeString(backdropUri);
+        dest.writeInt(id);
+        dest.writeString(originalLanguage);
+        dest.writeString(originalTitle);
+        dest.writeString(overview);
+        dest.writeString(releaseDate);
+        dest.writeString(posterUri);
+        dest.writeDouble(popularity);
+        dest.writeString(title);
+        dest.writeByte((byte) (hasVideo ? 1 : 0));
+        dest.writeDouble(voteAverage);
+        dest.writeInt(voteCount);
+    }
+
     @Override
     public String toString() {
         return "Movie{" +

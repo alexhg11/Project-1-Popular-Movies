@@ -1,5 +1,6 @@
 package com.alexhdz.popularmovies;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.alexhdz.popularmovies.adapter.ImageAdapter;
@@ -51,6 +53,16 @@ public class MovieFeedFragment extends Fragment {
                 new ArrayList<Movie>()
         );
         gridView.setAdapter(mMovieFeedAdapter);
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Movie movie = mMovieFeedAdapter.getItem(position);
+
+                Intent detailIntent = new Intent(getActivity(), MovieDetailActivity.class);
+                detailIntent.putExtra(Intent.EXTRA_TEXT, movie);
+                startActivity(detailIntent);
+            }
+        });
 
         return rootView;
     }

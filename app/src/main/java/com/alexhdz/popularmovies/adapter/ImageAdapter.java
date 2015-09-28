@@ -39,8 +39,8 @@ public class ImageAdapter extends BaseAdapter {
         return movies.size();
     }
 
-    public Object getItem(int position) {
-        return null;
+    public Movie getItem(int position) {
+        return movies.get(position);
     }
 
     public long getItemId(int position) {
@@ -71,7 +71,7 @@ public class ImageAdapter extends BaseAdapter {
             url.append(base);
             url.append(current.getPosterUri());
         } catch ( IndexOutOfBoundsException e ) {
-            url.append("android.resource://com.example.alexhdz.popularmovies/");
+            url.append("android.resource://com.alexhdz.popularmovies/");
             url.append(R.drawable.not_available);
         }
 

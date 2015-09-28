@@ -25,4 +25,5 @@
 
     <!-- Value in SharedPreferences for imperial temperature unit option [CHAR LIMIT=NONE] -->
     <string name="pref_sort_rated" translatable="false">vote_average</string>
+    <string name="title_activity_movie_detail">Movie Detail</string>
 </resources>
