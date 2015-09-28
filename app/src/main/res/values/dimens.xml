@@ -3,6 +3,15 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <!-- Guidlines for GridView -->
+    <!-- Guidelines for GridView -->
     <dimen name="fragment_moviefeed_no_spacing">0dp</dimen>
+    <dimen name="moviefeed_poster_width">106dp</dimen>
+
+    <!-- Guidelines for Movie Detail -->
+    <dimen name="activity_moviedetail_layout_margin">15dp</dimen>
+    <dimen name="activity_moviedetail_title_font_size">10pt</dimen>
+    <dimen name="activity_moviedetail_vote_font_size">9pt</dimen>
+    <dimen name="activity_moviedetail_release_date_font_size">6pt</dimen>
+    <dimen name="activity_moviedetail_overview_font_size">8pt</dimen>
+
 </resources>

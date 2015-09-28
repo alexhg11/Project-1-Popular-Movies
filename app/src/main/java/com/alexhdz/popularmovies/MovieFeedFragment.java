@@ -35,6 +35,7 @@ import java.util.List;
  */
 public class MovieFeedFragment extends Fragment {
 
+    private final String LOG_TAG = MovieFeedFragment.class.getSimpleName();
     private ImageAdapter mMovieFeedAdapter;
 
     public MovieFeedFragment() {
@@ -57,6 +58,8 @@ public class MovieFeedFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Movie movie = mMovieFeedAdapter.getItem(position);
+
+                Log.v(LOG_TAG, movie.toString());
 
                 Intent detailIntent = new Intent(getActivity(), MovieDetailActivity.class);
                 detailIntent.putExtra(Intent.EXTRA_TEXT, movie);
@@ -96,7 +99,7 @@ public class MovieFeedFragment extends Fragment {
             String movieFeedJsonStr = null;
 
             // URI parameters
-            String apiKey = "xxxxxxxxxxxxxxxxxx";
+            String apiKey = "1efc24d215f8e5bb6852972b99adceea";
 
             try {
                 // Construct the URL for the Movie DB query

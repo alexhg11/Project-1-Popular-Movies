@@ -21,6 +21,8 @@ import java.net.URL;
 
 public class MovieDetailActivity extends AppCompatActivity {
 
+    private final String LOG_TAG = MovieDetailActivity.class.getSimpleName();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +33,9 @@ public class MovieDetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null && intent.hasExtra(Intent.EXTRA_TEXT)) {
 
-            Movie movie = intent.getExtras().getParcelable("com.alexhdz.popularmovies.model.Movie");
+            Movie movie = intent.getExtras().getParcelable(Intent.EXTRA_TEXT);
+
+            Log.v(LOG_TAG, movie.toString());
 
             FetchPosterImageTask posterTask = new FetchPosterImageTask(
                     (ImageView) findViewById(R.id.imgPoster)
@@ -53,7 +57,7 @@ public class MovieDetailActivity extends AppCompatActivity {
                     .setText(movie.getReleaseDate());
 
             ((TextView) findViewById(R.id.txtVoteAverage))
-                    .setText(Double.toString(movie.getVoteAverage()));
+                    .setText(Double.toString(movie.getVoteAverage()) + "/10");
 
             ((TextView) findViewById(R.id.txtOverview))
                     .setText(movie.getOverview());
@@ -77,6 +81,7 @@ public class MovieDetailActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
 
