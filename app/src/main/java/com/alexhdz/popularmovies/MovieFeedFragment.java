@@ -99,7 +99,7 @@ public class MovieFeedFragment extends Fragment {
             String movieFeedJsonStr = null;
 
             // URI parameters
-            String apiKey = "1efc24d215f8e5bb6852972b99adceea";
+            String apiKey = "NO_API_KEY_CONFIGURED";
 
             try {
                 // Construct the URL for the Movie DB query
