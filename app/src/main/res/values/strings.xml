@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="hello_world">Hello world!</string>
+
+    <!--
+     By convention, "action" denotes that this String will be used as the label for an Action,
+     typically from the action bar.  The ActionBar is limited real estate, so shorter is better.
+    -->
+    <string name="action_settings">Settings</string>
+
+    <!-- Label for the sort by preference [CHAR LIMIT=30] -->
+    <string name="pref_sort_label">Sort Type</string>
+
+    <!-- Label for popularity option in sort by preference [CHAR LIMIT=25] -->
+    <string name="pref_sort_label_popularity">Popularity</string>
+
+    <!-- Label for highest rated option in sort by preference [CHAR LIMIT=25] -->
+    <string name="pref_sort_label_rated">Highest Rated</string>
+
+    <!-- Key name for sort by preference in SharedPreferences [CHAR LIMIT=NONE] -->
+    <string name="pref_sort_key" translatable="false">sortOrder</string>
+
+    <!-- Value in SharedPreferences for metric temperature unit option [CHAR LIMIT=NONE] -->
+    <string name="pref_sort_popularity" translatable="false">popularity</string>
+
+    <!-- Value in SharedPreferences for imperial temperature unit option [CHAR LIMIT=NONE] -->
+    <string name="pref_sort_rated" translatable="false">vote_average</string>
+</resources>
